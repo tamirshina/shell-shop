@@ -2,6 +2,12 @@ import { getAllProducts } from "@/lib/data/products";
 import { Container, Section } from "@/components/layout";
 import { Heading, Overline, Text, ProductCard } from "@/components/ui";
 
+export const metadata = {
+  title: "The Collection",
+  description:
+    "Discover our full range of eco-luxe keepsakes, thoughtfully crafted to honor the timeless forms of the Mediterranean coast.",
+};
+
 export default function CollectionPage() {
   const products = getAllProducts();
 

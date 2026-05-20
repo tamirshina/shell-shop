@@ -3,6 +3,41 @@ import { notFound } from "next/navigation";
 import { getProductBySlug, getAllProducts } from "@/lib/data/products";
 import { Container, Section } from "@/components/layout";
 import { Heading, Text, Overline, Divider, Badge, WaitlistForm } from "@/components/ui";
+import type { Metadata } from "next";
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const product = getProductBySlug(slug);
+
+  if (!product) {
+    return {
+      title: "Product Not Found",
+    };
+  }
+
+  return {
+    title: product.name,
+    description: product.tagline || product.description,
+    openGraph: {
+      title: `${product.name} | Sea Shells from the Holy Land`,
+      description: product.tagline || product.description,
+      images: [
+        {
+          url: product.images[0],
+          width: 1000,
+          height: 1250,
+          alt: product.name,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${product.name} | Sea Shells from the Holy Land`,
+      description: product.tagline || product.description,
+      images: [product.images[0]],
+    },
+  };
+}
 
 export function generateStaticParams() {
   const products = getAllProducts();
@@ -19,8 +54,28 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     notFound();
   }
 
+  const productJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": product.name,
+    "image": `https://seashells-holyland.com${product.images[0]}`,
+    "description": product.description,
+    "offers": {
+      "@type": "Offer",
+      "price": product.price,
+      "priceCurrency": product.currency,
+      "availability": "https://schema.org/PreOrder",
+      "url": `https://seashells-holyland.com/collection/${product.slug}`
+    },
+    "material": product.materials.join(", "),
+  };
+
   return (
     <main className="pt-20 md:pt-32">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+      />
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-start pb-20">
           {/* Left Column: Image Gallery */}

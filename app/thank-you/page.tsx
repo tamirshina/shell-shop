@@ -12,12 +12,10 @@ export default function ThankYouPage() {
       <Section bg="pearl" className="min-h-[70vh] !py-20 md:!py-32">
         <Container narrow className="flex flex-col items-center text-center space-y-8">
           <span className="text-5xl">✦</span>
-          <Overline>You're In</Overline>
+          <Overline>Request Received</Overline>
           <Heading level={1}>Thank You</Heading>
           <Text variant="lead" className="max-w-xl">
-            You're now on the First Drop waitlist. When our inaugural collection
-            is ready, you'll be the first to know — with one quiet email, just as
-            we promised.
+            We have received your custom waitlist request. Our founder will review your details, and we will be in touch shortly via email or phone to align on your preferences.
           </Text>
           <Divider decorative />
           <div className="flex flex-col sm:flex-row gap-4 pt-4">

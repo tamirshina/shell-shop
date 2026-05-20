@@ -7,3 +7,4 @@ export { default as Spacer } from "./Spacer";
 export { default as Badge } from "./Badge";
 export { default as ProductCard } from "./ProductCard";
 export { default as WaitlistForm } from "./WaitlistForm";
+export { default as BespokeWaitlistForm } from "./BespokeWaitlistForm";

@@ -18,9 +18,58 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Sea Shells from the Holy Land — Eco-Luxe Mediterranean Keepsakes",
+  metadataBase: new URL("https://seashells-holyland.com"),
+  title: {
+    default: "Sea Shells from the Holy Land — Eco-Luxe Mediterranean Keepsakes",
+    template: "%s | Sea Shells from the Holy Land",
+  },
   description:
     "Premium jewelry and meaningful gifts inspired by Mediterranean sea shell forms. Designed with reverence for nature, place, and memory.",
+  keywords: [
+    "eco-luxe jewelry",
+    "sustainable jewelry",
+    "mediterranean sea shells",
+    "holy land keepsakes",
+    "recycled gold jewelry",
+    "recycled silver charms",
+  ],
+  authors: [{ name: "Tamir Shina", url: "https://seashells-holyland.com" }],
+  creator: "Tamir Shina",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://seashells-holyland.com",
+    siteName: "Sea Shells from the Holy Land",
+    title: "Sea Shells from the Holy Land — Eco-Luxe Mediterranean Keepsakes",
+    description:
+      "Premium jewelry and meaningful gifts inspired by Mediterranean sea shell forms. Designed with reverence for nature, place, and memory.",
+    images: [
+      {
+        url: "/images/hero.png",
+        width: 1200,
+        height: 630,
+        alt: "Mediterranean coastal scene with sea shells concept",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sea Shells from the Holy Land — Eco-Luxe Mediterranean Keepsakes",
+    description:
+      "Premium jewelry and meaningful gifts inspired by Mediterranean sea shell forms. Designed with reverence for nature, place, and memory.",
+    images: ["/images/hero.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export default function RootLayout({
